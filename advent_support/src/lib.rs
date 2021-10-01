@@ -1,10 +1,6 @@
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
-    }
-}
+extern crate lazy_static;
+
+pub use lazy_static::lazy_static;
 
 use std::env;
 use std::fs::File;
@@ -28,6 +24,10 @@ where P: AsRef<Path>, {
 
 pub fn lines_arg1() -> Vec<String> {
     read_lines2(&argv()[1])
+}
+
+pub fn contents_arg1() -> String {
+    std::fs::read_to_string(&argv()[1]).unwrap()
 }
 
 pub fn argv() -> Vec<String> {
